@@ -7,7 +7,7 @@ import CheckoutSummary from './CheckoutSummary';
 import Image from 'next/image';
 
 function normalizePackageKey(input: any) {
-  if (!input) return 'standard'
+  if (!input) return 'basic'
   const s = String(input).trim().toLowerCase()
   if (s.includes('premium')) return 'premium'
   if (s.includes('standard')) return 'standard'
@@ -36,8 +36,8 @@ export default function CheckoutClient({ order }: { order: any }) {
   const packageKey = normalizePackageKey(order?.package_type || order?.package || order?.package_type_name)
   // Paddle integration removed
   const priceId = undefined
-  // Use stored amount from order, don't recalculate
-  const displayAmount = order?.amount || getPrice(packageKey as 'basic' | 'standard' | 'premium', order?.currency || 'USD')
+  // Use stored amount from order, and default to the basic GBP report amount if nothing is stored.
+  const displayAmount = order?.amount || getPrice(packageKey as 'basic' | 'standard' | 'premium', order?.currency || 'GBP')
 
   console.log('[CheckoutClient] Order loaded:', {
     order_id: order?.id,

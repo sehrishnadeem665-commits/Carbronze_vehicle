@@ -18,10 +18,9 @@ interface GetReportFormProps {
 }
 
 const vehicleTypes = ['Car', 'Motorcycle', 'Truck', 'Boat', 'ATV', 'RVS', 'Caravan', 'Motorhome', 'Campervan']
-const packages: Array<{ id: 'basic' | 'standard' | 'premium'; name: string }> = [
+const SHOPIFY_DIGITAL_REPORT_URL = 'https://techbriton-2.myshopify.com/products/digital-report?variant=52819992641864'
+const packages: Array<{ id: 'basic'; name: string }> = [
   { id: 'basic', name: 'Basic Report' },
-  { id: 'standard', name: 'Standard Report' },
-  { id: 'premium', name: 'Premium Report' },
 ]
 
 export default function GetReportForm({ isOpen, onClose, preselectedPackage, prefilledIdentType, prefilledIdentValue }: GetReportFormProps) {
@@ -32,7 +31,7 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
   const [customerName, setCustomerName] = useState('')
   const [customerPhone, setCustomerPhone] = useState('')
   const [customerEmail, setCustomerEmail] = useState('')
-  const [selectedPackage, setSelectedPackage] = useState(preselectedPackage || '')
+  const [selectedPackage, setSelectedPackage] = useState(preselectedPackage || 'basic')
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -52,6 +51,8 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
 
     if (preselectedPackage) {
       setSelectedPackage(preselectedPackage)
+    } else {
+      setSelectedPackage('basic')
     }
   }, [isOpen, prefilledIdentType, prefilledIdentValue, preselectedPackage])
 
@@ -123,8 +124,8 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
 
       // Store payment form data in sessionStorage for use on payment page
       sessionStorage.setItem('paymentFormData', JSON.stringify(formData))
-      
-      window.location.href = '/checkout'
+
+      window.location.href = SHOPIFY_DIGITAL_REPORT_URL
     } catch (err) {
       const errorMessage =
         err instanceof Error ? err.message : 'Failed to process payment. Please try again.'
@@ -321,17 +322,18 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
             </div>
 
             {/* Package Selection */}
-            <div className="space-y-3">
+            {/* <div className="space-y-3">
               <Label className="block text-sm font-semibold text-foreground">
                 Select Your Package
               </Label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {packages.map((pkg) => (
-                  <button
-                    key={pkg.id}
-                    type="button"
-                    onClick={() => setSelectedPackage(pkg.id)}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 text-center group ${
+              <div className="flex justify-center">
+                <div className="w-full max-w-sm">
+                  {packages.map((pkg) => (
+                    <button
+                      key={pkg.id}
+                      type="button"
+                      onClick={() => setSelectedPackage(pkg.id)}
+                      className={`w-full p-4 rounded-xl border-2 transition-all duration-200 text-center group ${
                       selectedPackage === pkg.id
                         ? 'bg-gradient-to-br from-[#b08a5a]/15 to-[#a67c4a]/10 border-[#b08a5a] shadow-lg shadow-[#b08a5a]/20'
                         : 'bg-white border-[#b08a5a]/30 hover:border-[#b08a5a]/60 hover:bg-[#b08a5a]/5 hover:shadow-md'
@@ -349,10 +351,11 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                     <span className="mt-3 block text-xs text-[#b08a5a] font-semibold">
                       Select package
                     </span>
-                  </button>
-                ))}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Error Message */}
             {error && (
@@ -382,10 +385,10 @@ export default function GetReportForm({ isOpen, onClose, preselectedPackage, pre
                   : `Continue to Payment - ${
                       selectedPackage
                         ? formatCurrency(
-                            getPrice(selectedPackage as any, 'USD'),
-                            'USD'
+                            getPrice(selectedPackage as any, 'GBP'),
+                            'GBP'
                           )
-                        : '$0'
+                        : '£0'
                     }`}
               </Button>
             </div>

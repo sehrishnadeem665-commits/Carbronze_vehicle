@@ -14,29 +14,6 @@ const PRIMARY = "#b08a5a"
 
 const basePricingPlans = [
   {
-    name: 'Premium',
-    badge: 'GOLD',
-    badgeColor: `bg-[${PRIMARY}]`,
-    priceKey: 'premium' as const,
-    icon: Crown,
-    popular: false,
-    borderColor: `border-[${PRIMARY}]`,
-    iconBg: 'bg-amber-50',
-    iconColor: `text-[${PRIMARY}]`,
-    features: [
-      'All Premium Features',
-      'Accident Records',
-      'Theft Records',
-      'Salvage Records',
-      'Open Recalls',
-      'Odometer Readings',
-      'Loan Details',
-      'Market Value',
-      'Specifications',
-    ],
-    buttonText: 'Select Plan',
-  },
-  {
     name: 'Basic',
     badge: 'MOST POPULAR',
     badgeColor: 'bg-amber-600',
@@ -52,27 +29,6 @@ const basePricingPlans = [
       'Salvage Records',
       'Open Recalls',
       'Lease Records',
-    ],
-    buttonText: 'Select Plan',
-  },
-  {
-    name: 'Standard',
-    badge: 'DIAMOND',
-    badgeColor: 'bg-cyan-500',
-    priceKey: 'standard' as const,
-    icon: Sparkles,
-    popular: false,
-    borderColor: 'border-cyan-500',
-    iconBg: 'bg-cyan-50',
-    iconColor: 'text-cyan-600',
-    features: [
-      'Accident Records',
-      'Theft Records',
-      'Salvage Records',
-      'Open Recalls',
-      'Odometer Readings',
-      'Loan Details',
-      'Market Value',
     ],
     buttonText: 'Select Plan',
   },
@@ -136,7 +92,8 @@ export default function PricingClient() {
           </div>
 
           {/* Cards */}
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          <div className="flex justify-center">
+            <div className="w-full max-w-md">
 
             {pricingPlans.map((plan, i) => (
               <div
@@ -192,6 +149,7 @@ export default function PricingClient() {
               </div>
             ))}
 
+            </div>
           </div>
 
           {/* Note */}
