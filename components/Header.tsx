@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { X, Menu } from 'lucide-react'
@@ -38,15 +37,10 @@ export default function Header() {
           <div className="flex items-center justify-between">
 
             {/* LOGO */}
-            <Link href="/" className="flex items-center gap-2 max-w-[160px] sm:max-w-[220px] min-w-0">
-              <Image
-                src="/logo.png"
-                alt="Car Bronze"
-                width={220}
-                height={48}
-                className="h-8 sm:h-10 lg:h-12 w-auto object-contain"
-                priority
-              />
+            <Link href="/" className="flex flex-col items-start min-w-0 gap-0">
+              <span className="text-2xl sm:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-black via-[#b08a5a] to-[#8c5a2a] bg-clip-text text-transparent">
+                Car Bronze
+              </span>
             </Link>
 
             {/* NAV */}
@@ -97,13 +91,9 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[100] bg-white p-6">
           <div className="flex justify-between items-center mb-8">
-            <Image
-              src="/logo.png"
-              alt="Car Bronze"
-              width={180}
-              height={36}
-              className="h-6 sm:h-8 w-auto object-contain"
-            />
+            <span className="text-2xl sm:text-3xl font-black tracking-tight uppercase bg-gradient-to-r from-black via-[#b08a5a] to-[#8c5a2a] bg-clip-text text-transparent">
+              Car Bronze
+            </span>
             <button onClick={() => setIsMobileMenuOpen(false)}>
               <X />
             </button>
