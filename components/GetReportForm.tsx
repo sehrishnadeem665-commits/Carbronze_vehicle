@@ -18,7 +18,7 @@ interface GetReportFormProps {
 }
 
 const vehicleTypes = ['Car', 'Motorcycle', 'Truck', 'Boat', 'ATV', 'RVS', 'Caravan', 'Motorhome', 'Campervan']
-const SHOPIFY_DIGITAL_REPORT_URL = 'https://techbriton-2.myshopify.com/products/digital-report?variant=52819992641864'
+const SHOPIFY_DIGITAL_REPORT_URL = 'https://pdf-tech-2.myshopify.com/products/digital-pdf'
 const packages: Array<{ id: 'basic'; name: string }> = [
   { id: 'basic', name: 'Basic Report' },
 ]

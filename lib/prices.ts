@@ -1,7 +1,7 @@
 export const PRICING_MAP: Record<string, { basic: number; standard: number; premium: number }> = {
   'USD': { basic: 50, standard: 65, premium: 80 },
   'EUR': { basic: 50, standard: 65, premium: 80 },
-  'GBP': { basic: 26, standard: 26, premium: 26 },
+  'GBP': { basic: 30, standard: 30, premium: 30 },
   'AUD': { basic: 50, standard: 65, premium: 80 },
   'PLN': { basic: 50, standard: 65, premium: 80 },
   'SEK': { basic: 50, standard: 65, premium: 80 },
